@@ -1,0 +1,10 @@
+procs:
+  next:
+    shell: "npm run dev"
+
+  # Enable these after adding the corresponding package.json scripts.
+  # convex:
+  #   shell: "npm run convex:dev"
+
+  # inngest:
+  #   shell: "npm run inngest:dev"
