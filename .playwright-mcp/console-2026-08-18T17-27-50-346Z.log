@@ -1,0 +1,113 @@
+[   12585ms] [ERROR]  Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback. @ https://honest-amoeba-91.accounts.dev/_next/static/chunks/pages/_app-31901acffcce4bd0.js?dpl=dpl_DLKNV51zXj5EDj6BRd8XyR8HfGMD:18
+[   13753ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ https://honest-amoeba-91.accounts.dev/_next/static/chunks/pages/_app-31901acffcce4bd0.js?dpl=dpl_DLKNV51zXj5EDj6BRd8XyR8HfGMD:14
+[   14778ms] [WARNING] Clerk: Structural CSS detected that may break on updates.
+
+Found:
+  - CSS "body.cl-component"
+  - CSS ".cl-component .button:focus-visible"
+
+These selectors depend on the internal DOM structure of Clerk's components, which may change when Clerk deploys component updates.
+To prevent breaking changes, install @clerk/ui and pass it to ClerkProvider:
+
+  import { ui } from '@clerk/ui'
+  <ClerkProvider ui={ui}>
+
+Learn more: https://clerk.com/docs/reference/components/versioning
+(code=structural_css_pin_clerk_ui) @ https://honest-amoeba-91.accounts.dev/_next/static/chunks/pages/_app-31901acffcce4bd0.js?dpl=dpl_DLKNV51zXj5EDj6BRd8XyR8HfGMD:14
+[   15949ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://honest-amoeba-91.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2F:0
+[   26898ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S758746903%3A1787074095152839&access_type=offline&client_id=787459168867-0v2orf3qo56uocsi84iroseoahhuovdm.apps.googleusercontent.com&o2v=1&prompt=consent&redirect_uri=https%3A%2F%2Fclerk.shared.lcl.dev%2Fv1%2Foauth_callback&response_type=code&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&service=lso&state=6xrt7z3chujydax1jmw15fl2ck34i80d44nko8mo&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAOAeabgpfGLNFPSKN0XO7foE6J0IqyKA9IIAkxzDoz9RzzZ0WG-lMTMD4iUS5qFxrMJpPrJt5lUqVafFOnrVVd5H-sqvXgJrdyATxrDuA3Zu0gxRlJ7x3lMJQ7EAKNjIxEouv0lrOeNcwkJ2WpQ6OAH1L0KLfiJ3pccD2e7GRs7sAZtoCQQ70fDW_FFINWBgVVKaxH976w4nWZEX-3cNMfCnC6Ur67LJ1IskmVJgO79uoC1e1cGvoMMOviYQCNVo3fs_MFZ27kKiWhAxq5ZlvyqMoy-BntRRN___ogPcfvrETnW6IRMc1sMOzeloldzxvNKGJakoBraj0GgeD0752AmdQc5Z_Z4ATNAKdLqTtmra4p5easTA16YJHh9xu_XYcywlxUvWxDrdo3CIAxLjSmovVG_QCL0xj6YiQrWe_c4DsckzvmJ1DKYVCI_y9ZielR068itVwjj35Im5kSvOc2F3G02l9xfShxBXFHZ6MEMlurIHSg%26flowName%3DGeneralOAuthFlow%26as%3DS758746903%253A1787074095152839%26client_id%3D787459168867-0v2orf3qo56uocsi84iroseoahhuovdm.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=https%3A%2F%2Fclerk.shared.lcl.dev&rart=ANgoxcfyBZZqwwUdOADL-uTkRk5E74OcTvDVPbiHSBdsoT_OALn5N_NkZWdGSrAiECd7bpscxxEmnwXV-PboCQE_HunPAq7089xHhlWjOG3Vy4cM8TnKQKU:0
+[   27022ms] [LOG] %c%s color: red; background: yellow; font-size: 24px; WARNING! @ https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.oEAJZ59JWr4.es5.O/am=EQEAAADfgDcSAOT__28AAAMItgO-ZwE0AUIGAAAAAAAAAACwAAAAjQAC/d=1/excm=_b,_tp,identifierview/ed=1/dg=0/wt=2/ujg=1/rs=AOaEmlERowuy6N6KeB5wnOR0FHwfUp5IAQ/dti=1/m=_b,_tp:554
+[   27023ms] [LOG] %c%s font-size: 18px; Using this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.
+Do not enter or paste code that you do not understand. @ https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.oEAJZ59JWr4.es5.O/am=EQEAAADfgDcSAOT__28AAAMItgO-ZwE0AUIGAAAAAAAAAACwAAAAjQAC/d=1/excm=_b,_tp,identifierview/ed=1/dg=0/wt=2/ujg=1/rs=AOaEmlERowuy6N6KeB5wnOR0FHwfUp5IAQ/dti=1/m=_b,_tp:554
+[   40315ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://accounts.google.com/v3/signin/challenge/pwd?TL=ACv9tzFCTGiTXM8A7pb9pzxaJLHziVdUu7j2G8RDe6wo_wVBVcklRY-sxM-Z7L_7&access_type=offline&app_domain=https%3A%2F%2Fclerk.shared.lcl.dev&checkConnection=youtube%3A7350&checkedDomains=youtube&cid=2&client_id=787459168867-0v2orf3qo56uocsi84iroseoahhuovdm.apps.googleusercontent.com&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAOAeabgpfGLNFPSKN0XO7foE6J0IqyKA9IIAkxzDoz9RzzZ0WG-lMTMD4iUS5qFxrMJpPrJt5lUqVafFOnrVVd5H-sqvXgJrdyATxrDuA3Zu0gxRlJ7x3lMJQ7EAKNjIxEouv0lrOeNcwkJ2WpQ6OAH1L0KLfiJ3pccD2e7GRs7sAZtoCQQ70fDW_FFINWBgVVKaxH976w4nWZEX-3cNMfCnC6Ur67LJ1IskmVJgO79uoC1e1cGvoMMOviYQCNVo3fs_MFZ27kKiWhAxq5ZlvyqMoy-BntRRN___ogPcfvrETnW6IRMc1sMOzeloldzxvNKGJakoBraj0GgeD0752AmdQc5Z_Z4ATNAKdLqTtmra4p5easTA16YJHh9xu_XYcywlxUvWxDrdo3CIAxLjSmovVG_QCL0xj6YiQrWe_c4DsckzvmJ1DKYVCI_y9ZielR068itVwjj35Im5kSvOc2F3G02l9xfShxBXFHZ6MEMlurIHSg%26flowName%3DGeneralOAuthFlow%26as%3DS758746903%253A1787074095152839%26client_id%3D787459168867-0v2orf3qo56uocsi84iroseoahhuovdm.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&dsh=S758746903%3A1787074095152839&flowName=GeneralOAuthFlow&o2v=1&opparams=%253F&prompt=consent&pstMsg=1&rart=ANgoxcfyBZZqwwUdOADL-uTkRk5E74OcTvDVPbiHSBdsoT_OALn5N_NkZWdGSrAiECd7bpscxxEmnwXV-PboCQE_HunPAq7089xHhlWjOG3Vy4cM8TnKQKU&redirect_uri=https%3A%2F%2Fclerk.shared.lcl.dev%2Fv1%2Foauth_callback&response_type=code&scope=openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&service=lso&state=6xrt7z3chujydax1jmw15fl2ck34i80d44nko8mo:0
+[   95070ms] [LOG] %c%s color: red; background: yellow; font-size: 24px; WARNING! @ https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.OAuthUi.en.sJz3Btf28Wc.es5.O/am=EgAAAPABAoD__98Agu3AewZQgAAAAAAAAAAAgAEAIAI/d=1/excm=_b,_tp,attributesview/ed=1/dg=0/wt=2/ujg=1/rs=AOaEmlHfzILEUiP8u__SAmgEg63r2KnqSA/dti=1/m=_b,_tp:539
+[   95071ms] [LOG] %c%s font-size: 18px; Using this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.
+Do not enter or paste code that you do not understand. @ https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.OAuthUi.en.sJz3Btf28Wc.es5.O/am=EgAAAPABAoD__98Agu3AewZQgAAAAAAAAAAAgAEAIAI/d=1/excm=_b,_tp,attributesview/ed=1/dg=0/wt=2/ujg=1/rs=AOaEmlHfzILEUiP8u__SAmgEg63r2KnqSA/dti=1/m=_b,_tp:539
+[   97358ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <div.VfPpkd-qNpTzb-P1ekSe VfPpkd-qNpTzb-P1ekSe-OWXEXe-A9y3zc VfPpkd-qNpTzb-P1ekSe-OWXEXe-OiiCO-IhfUye>
+Ancestor with aria-hidden: <div.wuMMWb> @ https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAPE7Ann8_QKRTJAcicOI41qocJnRe1L7bmwM5LZXkkHDQTs6Ig4RpKLY_jNBsA1m0oJiKh-22IMquIruyr1BttnA6MhJTd6kBjTdED8FnuCwaoEfijp9RwtZL_5XAKi3eYXqaUHwd4_J_6EYrHRsWduJv7SWCd4KUC-1kLfdni-ixzGibPA-j_0fhns3vAH5-FSGYa2FI2DawrTbcTAM3Xv3r2_KoUeR9db2JUkS-Gt1nqyQigEqQyjIjbPvAIdlx1fWoy_WPugyxaZcbGLRsgI3-fPijnK1QWLJ-k3SzH4k2LX_vJkndMeqrTU59kZQawF_pPzbJBGSY4meBSFRDcNScgZEGXBWt02eZ7iJmNe0qRbprTNhK86A5CRG4acfk5GfKfeRJxBhlooICbvO6nCT_6GT5POPa38sV78QvI9Td6QiWwa9zsYhiAKLNhFLa46KIUgeKw8i7WnHCdiQ7KgQqGfsrW-OOLXhtlfxKeJXYZD-CFtql9XRdsYxXVrIXg4rHQB6FHRB0BKq5DmvChbwpmuHngQ8LMEIu5WeX3ml7li7YKcA07x6t5OQSibIEMvvQzAjtArpHv-EXDDv1a8TXZBaSpO0DAPuSyiQY1b1lbtYN8-Pxsh81C26ppiy9Jha_Zz7PabynM4y8ZCyjIJj0-sq4NiNti_xOEWTW42dD9XWkIABXA7ri688mGjEfy0MsDFvVMHKW4L-6gFad1KBu-Mq3BJmN3l7cd7KsVnHLY-YxPKpKLw9prE7sVqdpMyuR-cSbI8xJp4DyZwz0rf2rJRxWQQU6MOnAwae8zjhPqe4n-mmQvF6079nCJo2pgLqLsbD_bnQzk5scMh8NHmQNshOT7mjEk6LRvtGuWGl8jtUpqEyumZp3z3RcgJQXZ4KZj3kagIVAUMZ2vDn1yWUAJaDSFgQ92IB8G5fTTs2sPrSUCj-uMENLzpuXJzqOF7rQbT33n_Ezn_Jj8SLQeVBGm1TrmkWkUevHFUSKT5SVwOghw&flowName=GeneralOAuthFlow&as=S758746903%3A1787074095152839&client_id=787459168867-0v2orf3qo56uocsi84iroseoahhuovdm.apps.googleusercontent.com&rapt=AEjHL4O1YlLU-3HZzlb6y9bJrU2WTiIaex-sSrl3sFB2HUqQA3hKUcC63epmdwFA0lya30WdUz4nwtXMPMdVd-_hRfPwHXf-rhZPgP3WmUbv0MLIAYxHwF0#:0
+[   99387ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://honest-amoeba-91.clerk.accounts.dev/favicon.ico:0
+[  105883ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  106657ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  107712ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  109585ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <DashboardSidebar>
+      <Sidebar collapsible="icon">
+        <div className="group peer..." data-state="collapsed" data-collapsible="icon" data-variant="sidebar" ...>
+          <div>
+          <div data-slot="sidebar-co..." data-side="left" className="fixed inse...">
+            <div data-sidebar="sidebar" data-slot="sidebar-inner" className="flex size-...">
+              <SidebarHeader className="flex flex-...">
+                <div data-slot="sidebar-he..." data-sidebar="header" className="p-2 flex f...">
+                  <div>
+                  <SidebarMenu>
+                    <ul data-slot="sidebar-menu" data-sidebar="menu" className="flex w-ful...">
+                      <SidebarMenuItem>
+                        <li data-slot="sidebar-me..." data-sidebar="menu-item" className="group/menu...">
+                          <withClerk(OrganizationSwitcher) hidePersonal={true} fallback={<Skeleton>} ...>
+                            <OrganizationSwitcher getContainer={function} hidePersonal={true} fallback={<Skeleton>} ...>
+                              <Skeleton>
+                              <ClerkHostRenderer mount={function} unmount={function} updateProps={function} props={{...}} ...>
++                               <div
++                                 ref={{current:null}}
++                                 style={{display:"none"}}
++                                 data-clerk-component="OrganizationSwitcher"
++                               >
+                                ...
+              ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:3348:56)
+    at beginWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_a0e4c7b4._.js:2647:64)
+[  110447ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  110552ms] [LOG] [Fast Refresh] done in 231ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  115641ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  155143ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  198834ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  235587ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  239062ms] [LOG] [Fast Refresh] done in 2968ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  239236ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  239289ms] [LOG] [Fast Refresh] done in 165ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  239438ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  239453ms] [LOG] [Fast Refresh] done in 120ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  243167ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  286842ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  287676ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  289541ms] [LOG] [Fast Refresh] done in 1752ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  292660ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  331600ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  377133ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  405264ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  407366ms] [LOG] [Fast Refresh] done in 2022ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  410647ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  420441ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  420585ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  420633ms] [LOG] [Fast Refresh] done in 154ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  420765ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  420832ms] [LOG] [Fast Refresh] done in 191ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  465567ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  465710ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  465716ms] [LOG] [Fast Refresh] done in 108ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  510373ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  554717ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  598303ms] [WARNING] The resource https://honest-amoeba-91.clerk.accounts.dev/npm/@clerk/ui@canary/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+[  627570ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  627592ms] [LOG] [Fast Refresh] done in 124ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
