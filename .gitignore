@@ -44,3 +44,6 @@ next-env.d.ts
 
 # playwright mcp artifacts
 /.playwright-mcp/
+
+# system voice audio (uploaded to blob storage, not tracked)
+/scripts/system-voices/
