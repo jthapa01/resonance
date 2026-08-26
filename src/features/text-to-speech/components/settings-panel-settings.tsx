@@ -7,6 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { useTypedAppFormContext } from "@/hooks/use-app-form";
 import { sliders } from "@/features/text-to-speech/data/sliders";
 import { ttsFormOptions } from "@/features/text-to-speech/components/text-to-speech-form";
+import { VoiceSelector } from "@/features/text-to-speech/components/voice-selector";
 
 export function SettingsPanelSettings() {
   const form = useTypedAppFormContext(ttsFormOptions);
@@ -16,9 +17,7 @@ export function SettingsPanelSettings() {
     <>
       {/* Voice Stype Dropdown Section */}
       <div className="border-b border-dashed p-4">
-        <p className="text-sm text-muted-foreground">
-          Voice selector coming soon
-        </p>
+        <VoiceSelector />
       </div>
 
       {/* Voice Adjustments Section */}
