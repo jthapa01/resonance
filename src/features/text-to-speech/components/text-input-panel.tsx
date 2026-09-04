@@ -8,6 +8,10 @@ import { useTypedAppFormContext } from "@/hooks/use-app-form";
 import { COST_PER_UNIT, TEXT_MAX_LENGTH } from "@/features/text-to-speech/data/constants";
 import { ttsFormOptions } from "./text-to-speech-form";
 import { GenerateButton } from "./generate-button";
+import { SettingsDrawer } from "./settings-drawer";
+import { HistoryDrawer } from "./history-drawer";
+import { VoiceSelectorButton } from "./voice-selector-button";
+import { PromptSuggestions } from "./prompt-suggestions";
 
 export function TextInputPanel() {
   const form = useTypedAppFormContext(ttsFormOptions);
@@ -39,6 +43,12 @@ export function TextInputPanel() {
       <div className="shrink-0 p-4 lg:p-6">
         {/* Mobile layout */}
         <div className="flex flex-col gap-3 lg:hidden">
+          <div className="flex items-center gap-2">
+            <SettingsDrawer>
+              <VoiceSelectorButton />
+            </SettingsDrawer>
+            <HistoryDrawer />
+          </div>
           <GenerateButton
             className="w-full"
             disabled={isSubmitting}

@@ -1,30 +1,62 @@
 "use client";
 
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { useTRPC } from "@/trpc/client";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 import { AudioLines, AudioWaveform, Clock } from "lucide-react";
 
 export function SettingsPanelHistory() {
-  return (
-    <div className="flex h-full flex-col items-center justify-center gap-2 p-8">
-      <div className="relative flex w-25 items-center justify-center">
-        
-        <div className="absolute left-0 -rotate-30 rounded-full bg-muted p-3">
-          <AudioLines className="size-4 text-muted-foreground" />
-        </div>
-        
-        <div className="relative z-10 rounded-full bg-foreground p-3">
-          <AudioWaveform className="size-4 text-background" />
-        </div>
+  const trpc = useTRPC();
+  const { data: generations } = useSuspenseQuery(trpc.generations.getAll.queryOptions(),);
 
-        <div className="absolute right-0 -rotate-30 rounded-full bg-muted p-3">
-          <Clock className="size-4 text-muted-foreground" />
+  if (!generations.length) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-8">
+        <div className="relative flex w-25 items-center justify-center">
+
+          <div className="absolute left-0 -rotate-30 rounded-full bg-muted p-3">
+            <AudioLines className="size-4 text-muted-foreground" />
+          </div>
+
+          <div className="relative z-10 rounded-full bg-foreground p-3">
+            <AudioWaveform className="size-4 text-background" />
+          </div>
+
+          <div className="absolute right-0 rotate-30 rounded-full bg-muted p-3">
+            <Clock className="size-4 text-muted-foreground" />
+          </div>
         </div>
+        <p className="font-semibold tracking-tight text-foreground">
+          No generations yet
+        </p>
+        <p className="max-w-48 text-center text-xs text-muted-foreground">
+          Generate some audio and it will appear here
+        </p>
       </div>
-      <p className="font-semibold tracing-tight text-foreground">
-        No generations yet
-      </p>
-      <p className="max-w-48 text-center text-xs text-muted-foreground">
-        Generate some audio and it will appear here
-      </p>
+    );
+  };
+
+  return (
+    <div className="flex flex-col gap-1 p-2">
+      {generations.map((gen) => (
+        <Link
+          key={gen.id}
+          href={`/text-to-speech/${gen.id}`}
+          className="flex items-center gap-3 rounded-lg p-3 text-left transition-colors hover:bg-muted"
+        >
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <p className="truncate text-sm font-medium text-foreground">{gen.text}</p>
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <VoiceAvatar seed={gen.voiceId ?? gen.voiceName} name={gen.voiceName} className="size-4 shrink-0" />
+              <span>{gen.voiceName}</span>
+              <span>&middot;</span>
+              <span>{formatDistanceToNow(new Date(gen.createdAt), { addSuffix: true })}</span>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   );
-};
+}
