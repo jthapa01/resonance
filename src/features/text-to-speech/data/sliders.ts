@@ -35,8 +35,9 @@ export const sliders: Slider[] = [
     label: "Expression Range",
     leftLabel: "Subtle",
     rightLabel: "Dramatic",
-    min: 1,
-    max: 10000,
+    // Speech vocab is 6561 tokens, so top_k past ~2000 stops changing the output.
+    min: 100,
+    max: 2000,
     step: 100,
     defaultValue: 1000,
   },

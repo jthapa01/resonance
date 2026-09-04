@@ -27,7 +27,12 @@ export function SettingsPanelSettings() {
             <form.Field key={slider.id} name={slider.id}>
               {(field) => (
                 <Field>
-                  <FieldLabel>{slider.label}</FieldLabel>
+                  <div className="flex items-center justify-between">
+                    <FieldLabel>{slider.label}</FieldLabel>
+                    <span className="text-xs tabular-nums text-muted-foreground">
+                      {field.state.value}
+                    </span>
+                  </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">
                       {slider.leftLabel}
