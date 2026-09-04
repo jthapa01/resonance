@@ -47,3 +47,8 @@ next-env.d.ts
 
 # system voice audio (uploaded to blob storage, not tracked)
 /scripts/system-voices/
+
+# local test artifacts
+/scratch/
+
+__pycache__

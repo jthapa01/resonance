@@ -2,9 +2,10 @@ procs:
   next:
     shell: "npm run dev"
 
-  # Enable these after adding the corresponding package.json scripts.
-  # convex:
-  #   shell: "npm run convex:dev"
-
-  # inngest:
-  #   shell: "npm run inngest:dev"
+  # Modal is DEPLOYED (`modal deploy chatterbox_tts.py`); the app calls its live
+  # HTTPS endpoint, so you do NOT need this for normal frontend work.
+  # Uncomment ONLY when editing chatterbox_tts.py — `modal serve` gives a
+  # hot-reloading TEMPORARY dev endpoint. Its URL differs from the deployed one,
+  # so point CHATTERBOX_API_URL in .env at the URL this prints, then run sync-api.
+  # modal:
+  #   shell: "py -3.12 -m modal serve chatterbox_tts.py"

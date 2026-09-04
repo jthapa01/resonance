@@ -7,13 +7,13 @@ export const metadata: Metadata = { title: "Text-to-Speech" };
 export default async function TextToSpeechPage({
   searchParams,
 }: {
-  searchParams: Promise<{ text?: string; voiceId?: string }>;
+  searchParams: Promise<{ text?: string; voiceId?: string; voice?: string }>;
 }) {
-  const { text, voiceId } = await searchParams;
+  const { text, voiceId, voice } = await searchParams;
   prefetch(trpc.voices.getAll.queryOptions());
   return (
     <HydrateClient>
-      <TextToSpeechView initialValues={{ text, voiceId }} />
+      <TextToSpeechView initialValues={{ text, voiceId }} initialVoiceName={voice} />
     </HydrateClient>
   );
 };
