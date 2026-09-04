@@ -8,16 +8,19 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useTRPC } from "@/trpc/client";
 import { TTSVoicesProvider } from "../contexts/tts-voices-context";
 
-export function TextToSpeechView({ initialValues }: { initialValues?: Partial<TTSFormValues>; }) {
+export function TextToSpeechView({ initialValues, initialVoiceName }: { initialValues?: Partial<TTSFormValues>; initialVoiceName?: string; }) {
   const trpc = useTRPC();
   const { data: voices } = useSuspenseQuery(trpc.voices.getAll.queryOptions());
   const { custom: customVoices, system: systemVoices } = voices;
   const allVoices = [...customVoices, ...systemVoices];
   const fallbackVoiceId = allVoices[0]?.id ?? "";
 
-  // Keep the requested id as-is so an unknown voice surfaces as "Unavailable voice";
-  // only fall back to the first voice when no id was requested.
-  const resolvedVoiceId = initialValues?.voiceId || fallbackVoiceId;
+  // Precedence: explicit voiceId (kept as-is so an unknown id surfaces as
+  // "Unavailable voice") -> voice name lookup (from quick actions) -> first voice.
+  const resolvedVoiceId =
+    initialValues?.voiceId ||
+    allVoices.find((v) => v.name === initialVoiceName)?.id ||
+    fallbackVoiceId;
 
   const defaultValues: TTSFormValues = {
     ...defaultTTSValues,

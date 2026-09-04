@@ -6,7 +6,10 @@ import { fileURLToPath } from "node:url";
 import { z } from "zod";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { BlobServiceClient } from "@azure/storage-blob";
-import { PrismaClient, type VoiceCategory, } from "../src/generated/prisma/client";
+import {
+  PrismaClient,
+  type VoiceCategory,
+} from "../src/generated/prisma/client";
 import { CANONICAL_SYSTEM_VOICE_NAMES } from "../src/features/voices/data/voice-scoping";
 
 const SYSTEM_VOICES_DIR = path.join(
@@ -175,11 +178,11 @@ async function seedSystemVoice(name: string) {
   });
 
   if (existingSystemVoice) {
-    const r2ObjectKey = `voices/system/${existingSystemVoice.id}`;
+    const storageKey = `voices/system/${existingSystemVoice.id}`;
     const meta = systemVoiceMetadata[name];
 
     await uploadSystemVoiceAudio({
-      key: r2ObjectKey,
+      key: storageKey,
       buffer,
       contentType,
     });
@@ -187,7 +190,7 @@ async function seedSystemVoice(name: string) {
     await prisma.voice.update({
       where: { id: existingSystemVoice.id },
       data: {
-        r2ObjectKey,
+        storageKey,
         ...(meta && {
           description: meta.description,
           category: meta.category,
@@ -216,11 +219,11 @@ async function seedSystemVoice(name: string) {
     },
   });
 
-  const r2ObjectKey = `voices/system/${voice.id}`;
+  const storageKey = `voices/system/${voice.id}`;
 
   try {
     await uploadSystemVoiceAudio({
-      key: r2ObjectKey,
+      key: storageKey,
       buffer,
       contentType,
     });
@@ -230,7 +233,7 @@ async function seedSystemVoice(name: string) {
         id: voice.id,
       },
       data: {
-        r2ObjectKey,
+        storageKey,
       },
     });
   } catch (error) {
