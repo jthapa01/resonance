@@ -41,6 +41,7 @@ with image.imports():
     import os
     from pathlib import Path
 
+    import torch  # pyright: ignore[reportMissingImports]
     import torchaudio as ta  # pyright: ignore[reportMissingImports]
     from azure.core.exceptions import ResourceNotFoundError
     from azure.storage.blob import BlobServiceClient
@@ -78,6 +79,73 @@ with image.imports():
         top_k: int = Field(default=1000, ge=1, le=10000)
         repetition_penalty: float = Field(default=1.2, ge=1.0, le=2.0)
         norm_loudness: bool = Field(default=True)
+
+
+def trim_silence(wav, sr: int, threshold: float = 0.02, pad_ms: int = 60):
+    """Strip leading/trailing near-silence from a generated segment. Turbo generates up
+    to a 1000-token (~40s) cap, so a chunk that does not cleanly hit EOS comes back with
+    a long silent tail that would otherwise be stitched into the final audio."""
+    envelope = wav.abs().amax(dim=0)
+    peak = envelope.max()
+    if peak <= 0:
+        return wav
+
+    loud = (envelope > threshold * peak).nonzero()
+    if loud.numel() == 0:
+        return wav
+
+    pad = int(sr * pad_ms / 1000)
+    start = max(0, int(loud[0].item()) - pad)
+    end = min(wav.shape[1], int(loud[-1].item()) + pad)
+    return wav[:, start:end]
+
+
+def split_text(text: str, max_chars: int = 250) -> list[str]:
+    """Split long text into sentence-grouped chunks. Chatterbox degrades past a few
+    sentences per call and its own demo apps cap input at 300 chars, so long-form input
+    must be synthesized chunk-by-chunk. Punctuation is left as-is because the library's
+    punc_norm() already normalizes it inside generate()."""
+    import re
+
+    text = re.sub(r"\s+", " ", text).strip()
+    if not text:
+        return []
+
+    # Semicolons and colons are clause breaks the model handles like sentence ends.
+    sentences = re.split(r"(?<=[.!?;:])\s+", text)
+    chunks: list[str] = []
+    current = ""
+
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if not sentence:
+            continue
+
+        # Fall back to comma breaks, then word boundaries, for overlong sentences.
+        while len(sentence) > max_chars:
+            head = sentence[:max_chars]
+            cut = head.rfind(", ")
+            if cut > 0:
+                cut += 1
+            else:
+                cut = head.rfind(" ")
+            if cut <= 0:
+                cut = max_chars
+            chunks.append(sentence[:cut].strip())
+            sentence = sentence[cut:].strip()
+
+        if not current:
+            current = sentence
+        elif len(current) + 1 + len(sentence) <= max_chars:
+            current = f"{current} {sentence}"
+        else:
+            chunks.append(current)
+            current = sentence
+
+    if current:
+        chunks.append(current)
+
+    return chunks
 
 
 @app.cls(
@@ -128,15 +196,35 @@ class Chatterbox:
         norm_loudness: bool = True,
     ):
         audio_prompt_path = self.download_voice(voice_key)
-        wav = self.model.generate(
-            prompt,
-            audio_prompt_path=str(audio_prompt_path),
-            temperature=temperature,
-            top_p=top_p,
-            top_k=top_k,
-            repetition_penalty=repetition_penalty,
-            norm_loudness=norm_loudness,
-        )
+        chunks = split_text(prompt) or [prompt]
+
+        segments = [
+            trim_silence(
+                self.model.generate(
+                    chunk,
+                    audio_prompt_path=str(audio_prompt_path),
+                    temperature=temperature,
+                    top_p=top_p,
+                    top_k=top_k,
+                    repetition_penalty=repetition_penalty,
+                    norm_loudness=norm_loudness,
+                ),
+                self.model.sr,
+            )
+            for chunk in chunks
+        ]
+
+        if len(segments) == 1:
+            wav = segments[0]
+        else:
+            # 0.3s of silence between chunks keeps sentence pacing natural.
+            gap = segments[0].new_zeros(1, int(0.3 * self.model.sr))
+            joined: list = []
+            for index, segment in enumerate(segments):
+                if index:
+                    joined.append(gap)
+                joined.append(segment)
+            wav = torch.cat(joined, dim=1)
 
         buffer = io.BytesIO()
         ta.save(buffer, wav, self.model.sr, format="wav")
