@@ -52,3 +52,6 @@ next-env.d.ts
 /scratch/
 
 __pycache__
+
+# Sentry Config File
+.env.sentry-build-plugin
