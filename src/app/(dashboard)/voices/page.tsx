@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/page-header";
+import type { SearchParams } from "nuqs/server";
+import { prefetch, trpc, HydrateClient } from "@/trpc/server";
+import { VoicesView } from "@/features/voices/views/voices-view";
+import { voicesSearchParamsCache } from "@/features/voices/lib/params";
 
-export const metadata: Metadata = { title: "Explore voices" };
+export const metadata: Metadata = { title: "Voices" };
 
-export default function VoicesPage() {
+export default async function Voicespage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const { query } = await voicesSearchParamsCache.parse(searchParams);
+  prefetch(trpc.voices.getAll.queryOptions({ query }));
+
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden">
-      <PageHeader title="Explore voices" />
-      <div className="flex flex-1 items-center justify-center p-8">
-        <div className="text-center">
-          <p className="text-sm font-medium text-foreground">No voices to explore yet</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Browse and preview voices here once this feature is available.
-          </p>
-        </div>
-      </div>
-    </div>
+    <HydrateClient>
+      <VoicesView />
+    </HydrateClient>
   );
 }
